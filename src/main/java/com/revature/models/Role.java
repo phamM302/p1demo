@@ -1,4 +1,4 @@
-package com.revature.models;
+/*package com.revature.models;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
@@ -8,4 +8,4 @@ import org.springframework.stereotype.Component;
 @Table(name = "roles")
 public class Role {
 
-}
+}*/

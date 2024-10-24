@@ -25,13 +25,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, columnDefinition = "TEXT DEFAULT 'employee'") //set default role to 'user'
+    @Column()
     private String role;
 
     //boilerplate code
 
 
     public User() {
+        this.role = "employee";
     }
 
     public User(int userId, String username, String password, String role) {
