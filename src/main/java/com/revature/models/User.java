@@ -1,7 +1,10 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component //registers user as a Spring Bean
 @Entity //This class will be created as a table in hte DB
@@ -27,6 +30,18 @@ public class User {
 
     @Column()
     private String role;
+
+    /*One to Many relationship (goes hand in hand with the @ManyToOne in Pet)
+
+     mappedBy: This refers to the @ManyToOne field in Pet that maps this relationship (user)
+
+     fetch: refer to the Pet class for info on this guy
+
+     cascade: This lets us define what operations cascade down to dependent records\
+        -CascadeType.ALL = all operations cascade down to dependent records (update, delete, etc) */
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore //prevents circular reference
+    private List<Pet> pets;
 
     //boilerplate code
 
